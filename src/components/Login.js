@@ -47,7 +47,12 @@ export default class Login extends Component {
                         <div className="bottom-button">
                             <FormGroup check inline>
                                 <Label check>
-                                    <Input type="checkbox" ref={input => this.checkbox = input} onChange={this.handleChangeCheckbox} />{this.props.buttonContent}
+                                    <Input type="checkbox" 
+                                           ref={input => this.checkbox = input} 
+                                           defaultChecked={this.props.isChecked} 
+                                           onChange={this.handleChangeCheckbox} />
+                                    
+                                    {this.props.buttonContent}
                                 </Label>
                             </FormGroup>
                             <Button type="button"  color="link">Forgot password</Button>

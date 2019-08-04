@@ -7,10 +7,10 @@ export default class App extends Component {
     constructor(){
         super();
         this.state = {
-            isChecked: true,
+            isChecked: false,
             rememberMe: "Remember Me",
             signUp: false,
-            signnedUp: false,
+            signedUp: false,
             loggedIn: false
         }
         this.handleSignUp = this.handleSignUp.bind(this);
@@ -25,7 +25,7 @@ export default class App extends Component {
     }
     handleSubmitSignup(){
         this.setState({
-            signnedUp: true
+            signedUp: true
         });
     }
     handleCheckbox(value) {
@@ -56,7 +56,7 @@ export default class App extends Component {
         }));
     }
     render() {
-        if(this.state.loggedIn || this.state.signnedUp){
+        if(this.state.loggedIn || this.state.signedUp){
             return <Redirect to="/user" />
         }
         return (
@@ -67,6 +67,7 @@ export default class App extends Component {
                         <SignUp   handleSignUp={this.handleSignUp}
                                   handleSubmitSignup={this.handleSubmitSignup} /> : 
                         <Login    handleCheckbox={this.handleCheckbox}
+                                  isChecked={this.state.isChecked}
                                   handleSubmitLogin={this.handleSubmitLogin}
                                   handleSignUp={this.handleSignUp} 
                                   buttonContent={this.state.rememberMe} />}
