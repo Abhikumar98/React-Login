@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
-import signUpImage from './../images/signup1.jpg'
+import signUpImage from './../images/signup1.jpg';
 
 
 export default class SignUp extends Component {
     constructor(props) {
         super();
-        this.state = {
-            signedUp: false
-        }
         this.handleSignUpForm = this.handleSignUpForm.bind(this);
     }
     handleSignUpForm(e) {
         e.preventDefault();
-        this.setState({
-            signedUp: true
-        })
-        this.props.handleSubmitSignUp();
+        this.props.handleSubmitSignup();
         this.formRef.reset();
     }
     render() {
-        const signedUp = this.state.signedUp;
-        if (signedUp === true) {
-            return <Redirect to="/user" />
-        }
         return (
             <form onSubmit={this.handleSignUpForm} ref={input => this.formRef = input} id="signup">
-                <img src={signUpImage} alt="SignUp Image" />
+                <img src={signUpImage} alt="SignUp" />
                 <div className="input-container">
                     <h1 style={{ textAlign: "center", width: "70%" }}>Sign Up</h1>
                     <div className="field">

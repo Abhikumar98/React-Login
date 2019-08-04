@@ -9,7 +9,7 @@ const User = () =>{
                         height:"100vh",
                         overflow:"hidden"}}>
             <h1>User Logged In</h1>
-            <img src={userImage} alt="user Image"/>
+            <img src={userImage} alt="user"/>
         </div>
     )
 }
