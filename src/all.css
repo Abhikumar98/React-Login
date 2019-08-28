@@ -85,6 +85,28 @@ img{
   width: 70%;
 }
 
+.check{
+    border: solid 1px lightslategrey;
+    border-radius: 5px;
+    max-width: 9rem;
+    min-width: 5.1rem;
+    text-align: center;
+    padding: 0 0.5rem 0 0.5rem;
+    font-size: 0.9rem;
+}
+.check:hover{
+    background-color: #dfedfa;
+    cursor: pointer;
+}
+.checkinput[type=checkbox]{
+  display: none;
+}
+.checkinput:checked + label{
+  border: solid 1px white;
+  background-color: dodgerblue;
+  color: white;
+}
+
 
 label,.field  input {
   transition: all 0.2s;

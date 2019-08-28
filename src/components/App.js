@@ -1,78 +1,17 @@
-import React, { Component } from 'react';
-import Login from './Login';
-import SignUp from './SignUp';
-import { Redirect } from 'react-router-dom'
+import React from 'react';
+import LoginContainer from './../containers/LoginContainer';
+import SignUpContainer from './../containers/SignUpContainer';
 
-export default class App extends Component {
-    constructor(){
-        super();
-        this.state = {
-            isChecked: false,
-            rememberMe: "Remember Me",
-            signUp: false,
-            signedUp: false,
-            loggedIn: false
-        }
-        this.handleSignUp = this.handleSignUp.bind(this);
-        this.handleCheckbox = this.handleCheckbox.bind(this);
-        this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
-        this.handleSubmitSignup = this.handleSubmitSignup.bind(this);
-    }
-    handleSubmitLogin(){
-        this.setState({
-            loggedIn: true
-        });
-    }
-    handleSubmitSignup(){
-        this.setState({
-            signedUp: true
-        });
-    }
-    handleCheckbox(value) {
-        this.setState(
-            {
-                isChecked: value
-            },
-            // callback is used because the setState function is asyncronous.
-            // So the if conditino will be executed when the setState process is complete 
-            // hence leading to a correct execution of program
-            ()=>{
-                if(this.state.isChecked){
-                    this.setState({
-                        rememberMe: "I'll remember you"
-                    });
+export const App = ({ state }) => {
+    
+    return(
+        <div id="container">
+            <div id="box" style={{ display: "flex" }}>
+                {
+                    state.signUp ?
+                        <SignUpContainer /> : <LoginContainer />
                 }
-                else{
-                    this.setState({
-                        rememberMe: "Remember Me"
-                    });
-                }
-            }
-        );
-    }
-    handleSignUp(){
-        this.setState(currentState => ({
-            signUp: !currentState.signUp
-        }));
-    }
-    render() {
-        if(this.state.loggedIn || this.state.signedUp){
-            return <Redirect to="/user" />
-        }
-        return (
-            <div id="container">
-                <div id="box" style={{display: "flex"}}>
-                    {
-                        this.state.signUp ? 
-                        <SignUp   handleSignUp={this.handleSignUp}
-                                  handleSubmitSignup={this.handleSubmitSignup} /> : 
-                        <Login    handleCheckbox={this.handleCheckbox}
-                                  isChecked={this.state.isChecked}
-                                  handleSubmitLogin={this.handleSubmitLogin}
-                                  handleSignUp={this.handleSignUp} 
-                                  buttonContent={this.state.rememberMe} />}
-                </div >
-            </div>
-        )
-    }
+            </div >
+        </div>
+    )
 }
