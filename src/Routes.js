@@ -14,4 +14,6 @@ const routes = () => {
     )
 }
 
+// temporarily removed 
+
 export default routes;
